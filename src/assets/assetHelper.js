@@ -18,10 +18,12 @@ export const gridReliabilityImage = gridReliabilityImg;
 import autoInspImg from './images/Automated Inspections.png';
 import predMaintImg from './images/Predictive Maintenance.png';
 import realtimeImg from './images/Real-time Analytics.png';
+import aiWorkforceImage from './images/ai_workforce.png';
 
 export const automatedInspectionsImg = autoInspImg;
 export const predictiveMaintenanceImg = predMaintImg;
 export const realtimeAnalyticsImg = realtimeImg;
+export const aiWorkforceImg = aiWorkforceImage;
 
 // ── How It Works steps ────────────────────────────────────────────
 import dataCollImg from './images/data_collection.png';
