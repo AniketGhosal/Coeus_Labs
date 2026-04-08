@@ -5,6 +5,10 @@ import logoVid from './images/logo-animation.mp4';
 export const logoVideo = logoVid;
 export const logoImg = logoVid; // keep reference but component will need change
 
+// --- Promotional Video ---
+import promoVid from './videos/drone_promo_video.mp4';
+export const promoVideo = promoVid;
+
 // ── Hero rotating images ───────────────────────────────────────────
 import iidasImg from './images/iidas.png';
 import lineMonitoringImg from './images/Real-TimeElectricalLineMonitoring&Automation.jpg';
