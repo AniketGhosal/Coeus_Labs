@@ -22,6 +22,7 @@ import {
 } from "./SharedComponents";
 import {
   logoVideo,
+  promoVideo, 
   iidasImage,
   lineMonitoringImage,
   gridReliabilityImage,
@@ -242,6 +243,7 @@ const heroSlides = [
   },
 ];
 
+
 const solutions = [
   {
     title: "Automated Inspections",
@@ -372,6 +374,7 @@ export default function HomePage() {
   const [progress, setProgress] = useState(0);
   const [displayText, setDisplayText] = useState("Initializing systems");
   const [heroIdx, setHeroIdx] = useState(0);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false); // <--- For Drone Promo Video
   const location = useLocation();
 
   // Loading
@@ -640,7 +643,7 @@ export default function HomePage() {
               >
                 {cur.description}
               </p>
-              <div
+              {/* <div
                 className="animate-fade-in-up"
                 style={{ animationDelay: "700ms", animationFillMode: "both" }}
               >
@@ -657,6 +660,34 @@ export default function HomePage() {
                   Explore Solutions{" "}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
+              </div> */}
+              <div
+                className="animate-fade-in-up flex flex-wrap gap-4"
+                style={{ animationDelay: "700ms", animationFillMode: "both" }}
+              >
+                {/* Existing Explore Solutions Button */}
+                <a
+                  href="#solutions"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById("solutions")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="inline-flex items-center px-8 py-4 shimmer-btn text-white font-semibold rounded-full shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:scale-105 group interactive"
+                >
+                  Explore Solutions{" "}
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                {/* NEW: See Video Demo Button */}
+                <button
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="inline-flex items-center px-8 py-4 glass glass-hover text-cyan-300 font-semibold rounded-full border border-cyan-500/30 hover:border-cyan-400 hover:text-cyan-100 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 group interactive"
+                >
+                  <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z" /></svg>
+                  See Video Demo
+                </button>
               </div>
             </motion.div>
           </div>
@@ -905,6 +936,39 @@ export default function HomePage() {
           </div>
         </footer>
       </div>
+
+
+
+
+
+      {/* ════════════════════════════════ VIDEO MODAL ════════════════════════════════ */}
+        {isVideoModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-xl transition-opacity duration-300">
+            {/* Click outside to close */}
+            <div className="absolute inset-0" onClick={() => setIsVideoModalOpen(false)}></div>
+            
+            {/* Modal Container */}
+            <div className="relative w-full max-w-5xl glass border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/20 animate-stagger-in">
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsVideoModalOpen(false)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-danger text-white rounded-full flex items-center justify-center border border-white/10 hover:border-danger transition-all backdrop-blur-md"
+              >
+                ✕
+              </button>
+              
+              {/* Video Player */}
+              <div className="aspect-video w-full bg-black">
+                <video 
+                  src={promoVideo} 
+                  controls 
+                  autoPlay 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        )}
     </div>
   );
 }
